@@ -1,8 +1,12 @@
 import {LoginPage} from '../../../pages/loginPage';
 import { LoggerHelper, LOGGER } from '../../../utilities/reporting/loggerHelper';
+import { LoginDetails } from '../../../resources/customTypes/loginDetais';
+import * as loginDetailsJson from '../../../resources/testData/loginDetails.json';
+import { FileUtils } from '../../../utilities/fileUtils';
 
 
 let loginPage : LoginPage;
+let loginDetails: LoginDetails;
 
 const specName = 'Test login scenarios';
 describe("Login to the application", () => {
@@ -14,12 +18,11 @@ describe("Login to the application", () => {
     it("should able to login with valid credentials", async () => {
         try {
             LOGGER.info("Starting the test");
-            await loginPage.login("bob@example.com", "10203040");
+            loginDetails = FileUtils.convertJsonToCustomType(loginDetailsJson);
+            await loginPage.login(loginDetails.username, loginDetails.password);
             LOGGER.info("Ending the test");
         } catch (error) {
-            // Log the error using your custom logger
             LOGGER.error(`Error during test execution: ${(error as Error).message}`);
-            // Rethrow the error to mark the test as failed
             throw error;
         }
     });
