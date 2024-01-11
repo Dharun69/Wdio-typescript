@@ -1,16 +1,24 @@
-import { ShippingAddressUi } from "../../../customTypes/shippingAddressUi";
+import { ShippingAddressUi } from "../../../resources/customTypes/shippingAddressUi";
 import {LoginPage} from '../../../pages/loginPage';
 import { ProductPage } from "../../../pages/productsPage";
-import { CardDetails } from "../../../customTypes/cardDetails";
+import { CardDetails } from "../../../resources/customTypes/cardDetails";
 import { AddToCartPage } from "../../../pages/addToCartPage";
 import { CheckOutPage } from "../../../pages/checkoutPage";
 import { MyCartPage } from "../../../pages/myCartPage";
+import * as cardDetailsJson from "../../../resources/testData/cardDetails.json";
+import * as shippingAddressDetailsJson from "../../../resources/testData/shippingAddress.json";
+import * as loginDetailsJson from '../../../resources/testData/loginDetails.json';
+import { LoginDetails } from '../../../resources/customTypes/loginDetais';
+import { FileUtils } from '../../../utilities/fileUtils';
+
+
 
 let loginPage : LoginPage;
 let productPage: ProductPage;
 let addToCartPage: AddToCartPage;
 let checkOutPage: CheckOutPage;
 let myCartPage: MyCartPage;
+let loginDetails: LoginDetails;
 
 
 
@@ -24,25 +32,11 @@ describe('Add item to cart', () => {
     });
 
     it('Add first item to cart', async () => {
-        const username: string = 'bob@example.com';
-        const password: string = '10203040';
-        const shippingAddressDetails: ShippingAddressUi = {
-            fullName: 'Rebecca Winter',
-            addressLine1: 'Mandorley 112',
-            addressLine2: 'Entrance 1',
-            city: 'Truro',
-            state: 'Cornwall',
-            zipCode: 89750,
-            country: 'United Kingdom'
-        };
-        const cardDetails: CardDetails = {
-            fullName: 'Rebecca Winter',
-            cardNumber: '325812657568789',
-            expirationDate: '0325',
-            securityCode: 123
-        }
 
-        await loginPage.login(username, password);
+        loginDetails = FileUtils.convertJsonToCustomType(loginDetailsJson);
+        const shippingAddressDetails: ShippingAddressUi = FileUtils.convertJsonToCustomType(shippingAddressDetailsJson);
+        const cardDetails: CardDetails = FileUtils.convertJsonToCustomType(cardDetailsJson);
+        await loginPage.login(loginDetails.username, loginDetails.password);
         await productPage.clickOnFirstProduct();
         await addToCartPage.addToCart();
         await addToCartPage.clickCartIcon();

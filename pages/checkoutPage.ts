@@ -1,7 +1,7 @@
 
 import { $ } from "@wdio/globals";
-import { ShippingAddressUi } from "../customTypes/shippingAddressUi";
-import { CardDetails } from "../customTypes/cardDetails"
+import { ShippingAddressUi } from "../resources/customTypes/shippingAddressUi";
+import { CardDetails } from "../resources/customTypes/cardDetails"
 
 export class CheckOutPage {
 
@@ -100,10 +100,10 @@ export class CheckOutPage {
         await this.enterFullName(shippingAddressDetails.fullName);
         await this.enterAddressLine1(shippingAddressDetails.addressLine1);
         await this.enterAddressLine2(shippingAddressDetails.addressLine2);
-        await this.enterCity(shippingAddressDetails.city);
-        await this.enterState(shippingAddressDetails.state);
+        await this.enterCity(shippingAddressDetails.cityName);
+        await this.enterState(shippingAddressDetails.stateName);
         await this.enterZipCode(shippingAddressDetails.zipCode);
-        await this.enterCountry(shippingAddressDetails.country);
+        await this.enterCountry(shippingAddressDetails.countryName);
         await driver.hideKeyboard();
     }
 

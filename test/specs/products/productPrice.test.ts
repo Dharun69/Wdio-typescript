@@ -4,11 +4,16 @@ import { LoginPage } from "../../../pages/loginPage";
 import { ProductPage } from "../../../pages/productsPage";
 import { AddToCartPage } from "../../../pages/addToCartPage";
 import { MyCartPage } from '../../../pages/myCartPage';
+import { LoginDetails } from '../../../resources/customTypes/loginDetais';
+import * as loginDetailsJson from '../../../resources/testData/loginDetails.json';
+import { FileUtils } from '../../../utilities/fileUtils';
+
 
 let loginPage : LoginPage;
 let productPage: ProductPage;
 let addToCartPage: AddToCartPage;
 let myCartPage: MyCartPage;
+let loginDetails: LoginDetails;
 
 const specName = 'Product price scenarios';
 describe("Product Price Comparison", () => {
@@ -18,7 +23,8 @@ describe("Product Price Comparison", () => {
         productPage = new ProductPage();
         addToCartPage = new AddToCartPage();
         myCartPage = new MyCartPage();
-        await loginPage.login("bob@example.com", "10203040");
+        loginDetails = FileUtils.convertJsonToCustomType(loginDetailsJson);
+        await loginPage.login(loginDetails.username, loginDetails.password);
     });
 
     it("Assert the prices from both the pages", async() => {
