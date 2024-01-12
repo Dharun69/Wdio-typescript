@@ -30,9 +30,7 @@ export namespace LoggerHelper {
             if (!existsSync(logFilePath)) {
                 writeFileSync(logFilePath, '');
             }
-
-            // initialize the logger
-            // if (LOGGER == undefined || LOGGER == null) {
+            
             LOGGER = winston.createLogger({
                 level: 'debug',
                 format: myFormat,

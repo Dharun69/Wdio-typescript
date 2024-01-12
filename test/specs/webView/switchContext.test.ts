@@ -42,8 +42,8 @@ describe('Switching between native to web views', () => {
         const nativeView = contexts[0];
         const webviewContext = contexts[1];
         await driver.switchContext(webviewContext.toString());
-        await driver.switchContext(nativeView.toString());
         // perform any actions in the webview page    
+        await driver.switchContext(nativeView.toString());
         await driver.back();
     });
 
