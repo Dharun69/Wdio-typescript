@@ -4,15 +4,19 @@ import { ProductPage } from "../../../pages/productsPage";
 import { LeftSideMenuScreenPage } from "../../../pages/leftSideMenuScreenPage";
 import { WebViewPage } from "../../../pages/webViewPage";
 import { SwitchContextUtils } from "../../../utilities/switchContextUtils";
+import { LoggerHelper, LOGGER } from '../../../utilities/customLogger/loggerHelper';
 
 let productPage : ProductPage;
 let leftSideMenuScreenPage: LeftSideMenuScreenPage;
 let webViewPage: WebViewPage;
 let switchContextUtils: SwitchContextUtils;
 
+
+const specName = 'Switching between contexts';
 describe('Switching between native to web views', () => {
 
     before(async()=> {
+        LoggerHelper.setupLogger(specName);
         productPage = new ProductPage();
         leftSideMenuScreenPage = new LeftSideMenuScreenPage();
         webViewPage = new WebViewPage();
@@ -30,7 +34,6 @@ describe('Switching between native to web views', () => {
         await leftSideMenuScreenPage.clickMenuItemWebview();
         await webViewPage.enterUrl(url);
         await webViewPage.clickGoToSiteButton();
-
         await driver.waitUntil(
             async () => {
                 return ((await driver.getContexts()).length) > 1;

@@ -1,16 +1,18 @@
 
 import { ProductPage } from "../../../pages/productsPage";
 import { BaseActions } from "../../../utilities/baseActions";
+import { LoggerHelper, LOGGER } from '../../../utilities/customLogger/loggerHelper';
 
 
 let productPage: ProductPage;
 let baseActions: BaseActions;
 
+const specName = 'Test swipe gestures';
 describe("Swipe Gestures", () => {
-
     before(async () => {
         productPage = new ProductPage();
         baseActions = new BaseActions();
+        LoggerHelper.setupLogger(specName);
     });
 
     afterEach(async () => {

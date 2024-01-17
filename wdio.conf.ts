@@ -73,7 +73,8 @@ export const config: Options.Testrunner = {
         "appium:udid": "emulator-5554",
         "appium:app": `${process.cwd()}/app/apk/android_sauce_lab_app.apk`,
         "appium:automationName": "UiAutomator2",
-        "appium:chromedriverExecutable": `${process.cwd()}/chromedriver-mobile/chromedriver` 
+        "appium:autoGrantPermissions": true,
+        "appium:chromedriverExecutable": `${process.cwd()}/chromedriver-mobile/chromedriver`
     }],
 
     //

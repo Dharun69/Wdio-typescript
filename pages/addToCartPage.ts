@@ -14,6 +14,7 @@ export class AddToCartPage {
 
     }
 
+
     async getAddToCartButtonEle() {
         return await $(this.selectors.addToCartButton);
     }

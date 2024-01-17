@@ -4,6 +4,7 @@ export class LeftSideMenuScreenPage {
         loginButtonFromSideMenu: "~menu item log in",
         menuItemLogOut: '~menu item log out',
         webViewButton: "~menu item webview",
+        qrCodeScanner: "~menu item qr code scanner"
     }
 
     public async getLoginButtonFromSideMenu() {
@@ -20,4 +21,9 @@ export class LeftSideMenuScreenPage {
         await menuItemWebviewEle.click();
     }
 
+    async clickQRScanner() {
+        const qrScannerEle = await $(this.selectors.qrCodeScanner);
+        await qrScannerEle.waitForDisplayed();
+        await qrScannerEle.click();
+    }
 }

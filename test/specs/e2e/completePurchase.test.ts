@@ -10,6 +10,7 @@ import * as shippingAddressDetailsJson from "../../../resources/testData/shippin
 import * as loginDetailsJson from '../../../resources/testData/loginDetails.json';
 import { LoginDetails } from '../../../resources/customTypes/loginDetais';
 import { FileUtils } from '../../../utilities/fileUtils';
+import { LoggerHelper, LOGGER } from '../../../utilities/customLogger/loggerHelper';
 
 
 
@@ -21,7 +22,7 @@ let myCartPage: MyCartPage;
 let loginDetails: LoginDetails;
 
 
-
+const specName = 'Test complete e2e purchase scenarios';
 describe('Add item to cart', () => {
     before(async () => {
         loginPage = new LoginPage();
@@ -29,6 +30,7 @@ describe('Add item to cart', () => {
         addToCartPage = new AddToCartPage();
         checkOutPage = new CheckOutPage();
         myCartPage = new MyCartPage();
+        LoggerHelper.setupLogger(specName);
     });
 
     it('Add first item to cart', async () => {

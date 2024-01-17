@@ -1,4 +1,4 @@
-import { LoggerHelper, LOGGER } from '../../../utilities/reporting/loggerHelper';
+import { LoggerHelper, LOGGER } from '../../../utilities/customLogger/loggerHelper';
 import * as assert from 'assert';
 import { LoginPage } from "../../../pages/loginPage";
 import { ProductPage } from "../../../pages/productsPage";
