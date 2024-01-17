@@ -40,5 +40,6 @@ describe("Swipe Gestures", () => {
     it('Should scroll until an element is visible on a mobile app', async () => {
         const footerEle = await productPage.getFooterEle();
         await baseActions.swipe(footerEle);
+
     })
 })
