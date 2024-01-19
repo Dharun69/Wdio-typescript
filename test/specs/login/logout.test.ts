@@ -2,7 +2,7 @@ import {LogoutPage} from '../../../pages/logutPage';
 import {LoginPage} from '../../../pages/loginPage';
 import { LoginDetails } from '../../../resources/customTypes/loginDetais';
 import * as loginDetailsJson from '../../../resources/testData/loginDetails.json';
-import { FileUtils } from '../../../utilities/fileUtils';
+import { FileUtils } from '../../../utilities/file/fileUtils';
 import { LoggerHelper, LOGGER } from '../../../utilities/customLogger/loggerHelper';
 
 

@@ -3,7 +3,7 @@
 import { ProductPage } from "../../../pages/productsPage";
 import { LeftSideMenuScreenPage } from "../../../pages/leftSideMenuScreenPage";
 import { WebViewPage } from "../../../pages/webViewPage";
-import { SwitchContextUtils } from "../../../utilities/switchContextUtils";
+import { SwitchContextUtils } from "../../../utilities/actions/switchContextUtils";
 import { LoggerHelper, LOGGER } from '../../../utilities/customLogger/loggerHelper';
 
 let productPage : ProductPage;
