@@ -9,7 +9,7 @@ import * as cardDetailsJson from "../../../resources/testData/cardDetails.json";
 import * as shippingAddressDetailsJson from "../../../resources/testData/shippingAddress.json";
 import * as loginDetailsJson from '../../../resources/testData/loginDetails.json';
 import { LoginDetails } from '../../../resources/customTypes/loginDetais';
-import { FileUtils } from '../../../utilities/fileUtils';
+import { FileUtils } from '../../../utilities/file/fileUtils';
 import { LoggerHelper, LOGGER } from '../../../utilities/customLogger/loggerHelper';
 
 

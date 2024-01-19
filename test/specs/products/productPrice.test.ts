@@ -6,7 +6,7 @@ import { AddToCartPage } from "../../../pages/addToCartPage";
 import { MyCartPage } from '../../../pages/myCartPage';
 import { LoginDetails } from '../../../resources/customTypes/loginDetais';
 import * as loginDetailsJson from '../../../resources/testData/loginDetails.json';
-import { FileUtils } from '../../../utilities/fileUtils';
+import { FileUtils } from '../../../utilities/file/fileUtils';
 
 
 let loginPage : LoginPage;

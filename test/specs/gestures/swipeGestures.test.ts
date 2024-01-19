@@ -1,6 +1,6 @@
 
 import { ProductPage } from "../../../pages/productsPage";
-import { BaseActions } from "../../../utilities/baseActions";
+import { BaseActions } from "../../../utilities/actions/baseActions";
 import { LoggerHelper, LOGGER } from '../../../utilities/customLogger/loggerHelper';
 
 

@@ -102,8 +102,8 @@ export class BaseActions {
                 const startY = 800;
                 const endY = 200;
     
-                await browser
-                .action('pointer', { parameters: { 'pointerType': 'touch' } })
+                await driver
+                .action('pointer')
                 .move({x: startX, y:startY})
                 .down()
                 .pause(500)
@@ -119,6 +119,7 @@ export class BaseActions {
             throw err;
         }
     }
+
     
     
 }
