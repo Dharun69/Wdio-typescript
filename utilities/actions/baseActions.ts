@@ -1,4 +1,5 @@
 
+import { LoggerHelper, LOGGER } from '../../utilities/customLogger/loggerHelper';
 
 
 
@@ -120,7 +121,43 @@ export class BaseActions {
         }
     }
 
-    
-    
+    async swipeByPercentage(element: string | WebdriverIO.Element, startPercentage: number, endPercentage: number, maxScrollAttempts: number = 5): Promise<boolean> {
+        let elementFound: boolean = false;
+
+        try {
+            if (typeof element === 'string') {
+                element = await $(element);
+            }
+
+            for (let attempt = 0; attempt < maxScrollAttempts; attempt++) {
+                if (await element.isDisplayed()) {
+                    elementFound = true;
+                    break;
+                }
+
+                const screenSize = await driver.getWindowRect();
+
+                const startX = screenSize.width * (startPercentage / 100);
+                const startY = screenSize.height * (80 / 100);
+                const endY = screenSize.height * (endPercentage / 100);
+
+                await driver.touchAction([
+                    { action: 'press', x: startX, y: startY },
+                    { action: 'wait', ms: 500 },
+                    { action: 'moveTo', x: startX, y: endY },
+                    { action: 'release' }
+                ]);
+            }
+
+            if (!elementFound) {
+                LOGGER.warn(`Element not found after ${maxScrollAttempts} swipe attempts.`);
+            }
+
+            return elementFound;
+        } catch (err) {
+            LOGGER.error(`Error during swipeByPercentage: ${err.stack}`);
+            throw err;
+        }
+    }
 }
 
