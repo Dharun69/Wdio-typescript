@@ -48,6 +48,9 @@ describe('Add item to cart', () => {
         await checkOutPage.enterCardDetails(cardDetails);
         await checkOutPage.clickReviewOrderButton();
         await checkOutPage.clickPlaceOrderButton();
+        const orderConfirmationEle = await checkOutPage.getOrderConfirmationEle();
+        const orderConfirmationText = await orderConfirmationEle.getText();
+        expect(orderConfirmationText).toBe(' Your order has been dispatched and will arrive as fast as the pony gallops!');
         await checkOutPage.clickContinueShoppingButton();
         
     });

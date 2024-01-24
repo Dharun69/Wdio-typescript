@@ -22,7 +22,12 @@ export class CheckOutPage {
         reviewOrderButton: "~Review Order button",
         placeOrderButton: "~Place Order button",
         continueShoppingButton: "~Continue Shopping button",
+        orderConfirmation: "//android.view.ViewGroup[@content-desc='checkout complete screen']/android.widget.ScrollView/android.view.ViewGroup/android.widget.TextView[4]"
+        
+    }
 
+    public async getOrderConfirmationEle() {
+        return await $(this.selectors.orderConfirmation);
     }
 
     async enterFullName(fullName: string) {
@@ -114,5 +119,7 @@ export class CheckOutPage {
         await this.enterSecurityCode(cardDetails.securityCode);
         await driver.hideKeyboard();
     }
+
+
 
 }
