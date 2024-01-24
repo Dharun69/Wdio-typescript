@@ -8,7 +8,7 @@
     "wdio": "wdio run ./wdio.conf.ts",
     "android": "PLATFORM=ANDROID wdio run ./config/wdio.mobile.config.ts --spec",
     "test-ios": "PLATFORM=IOS wdio run ./config/wdio.mobile.config.ts --spec test/specs/login/logout.test.ts",
-    "test-android": "PLATFORM=ANDROID wdio run ./config/wdio.mobile.config.ts --spec test/specs/e2e/completePurchase.test.ts",
+    "test-android": "PLATFORM=ANDROID wdio run ./config/wdio.mobile.config.ts --spec test/specs/cart/emptyCart.test.ts",
     "bs-android": "npx wdio run ./config/wdio.browserstack.config.ts --spec test/specs/webView/switchContext.test.ts"
   },
   "keywords": [],

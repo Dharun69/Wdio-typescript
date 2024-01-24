@@ -10,6 +10,7 @@ export class MyCartPage {
         goShoppingButton: '//android.view.ViewGroup[@content-desc="Go Shopping button"]',
         myCartLabel: '//android.widget.TextView[@text="My Cart"]',
         noItemsLabel: '//android.widget.TextView[@text="No Items"]',
+        totalPrice: "~total price"
 
     }
 
@@ -27,6 +28,10 @@ export class MyCartPage {
 
     async getGoShoppingButton() {
         return await $(this.selectors.goShoppingButton);
+    }
+
+    async getTotalPriceEle() {
+        return await $(this.selectors.totalPrice);
     }
 
 
