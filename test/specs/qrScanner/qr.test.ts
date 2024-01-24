@@ -26,5 +26,6 @@ describe("checking the notification permissions", ()=> {
         await leftSideMenuScreenPage.clickQRScanner();
         (await qrscannerpage.getQrHeader()).waitForDisplayed();
         await addToCartPage.clickCartIcon();
+        LOGGER.info('Ending the test')
     })
 })

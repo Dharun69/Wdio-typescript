@@ -1,5 +1,32 @@
 import type { Options } from '@wdio/types'
 const fs = require('fs');
+
+
+const ANDROID_CAPABILITIES = [
+    {
+        "appium:platformName": "Android",
+        "appium:deviceName": "Pixel_6_Pro_API_33",
+        "appium:automationName": "UiAutomator2",
+        "appium:udid": "emulator-5554",
+        "appium:autoGrantPermissions": true,
+        "appium:app": `${process.cwd()}/app/apk/android/android_sauce_lab_app.apk`,
+        "appium:chromedriverExecutable": `${process.cwd()}/chromedriver-mobile/chromedriver`
+    },
+];
+
+const IOS_CAPABILITIES = [
+    {
+        "appium:platformName": "ios",
+        "appium:deviceName": "iPhone 15",
+        "appium:automationName": "XCUITest",
+        "appium:udid": "86244DD5-5BBC-47C3-9469-90094D7D8646",
+        "appium:platformVersion": "17.0",
+        "appium:app": `${process.cwd()}/app/apk/ios/ios_sauce_app.app`,
+    },
+];
+
+
+
 export const config: Options.Testrunner = {
     //
     // ====================
@@ -61,21 +88,7 @@ export const config: Options.Testrunner = {
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://saucelabs.com/platform/platform-configurator
     //
-    capabilities: [{
-        // capabilities for local Appium web tests on an Android Emulator
-        // platformName: 'Android',
-        // browserName: 'Chrome',
-        // 'appium:deviceName': 'Android GoogleAPI Emulator',
-        // 'appium:platformVersion': '12.0',
-        // 'appium:automationName': 'UiAutomator2'
-        "appium:platformName": "Android",
-        "appium:deviceName": "Pixel_6_Pro_API_33",
-        "appium:udid": "emulator-5554",
-        "appium:app": `${process.cwd()}/app/apk/android_sauce_lab_app.apk`,
-        "appium:automationName": "UiAutomator2",
-        "appium:autoGrantPermissions": true,
-        "appium:chromedriverExecutable": `${process.cwd()}/chromedriver-mobile/chromedriver`
-    }],
+    capabilities: process.env.PLATFORM === "ANDROID" ? ANDROID_CAPABILITIES : IOS_CAPABILITIES,
 
     //
     // ===================

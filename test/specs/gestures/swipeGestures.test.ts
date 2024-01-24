@@ -42,4 +42,10 @@ describe("Swipe Gestures", () => {
         await baseActions.swipe(footerEle);
 
     })
+
+    it('Should scroll until an element is visible on a mobile app using swipebypercentage', async() => {
+        const footerEle = await productPage.getFooterEle();
+        await baseActions.swipeByPercentage(footerEle, 30, 70);
+
+    })
 })

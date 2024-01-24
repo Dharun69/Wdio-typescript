@@ -38,6 +38,7 @@ export class LoginPage {
         await menuItemLoginEle.click();
         const userNameInputFieldEle = await $(this.selectors.userNameInputField);
         await userNameInputFieldEle.waitForDisplayed();
+        await userNameInputFieldEle.addValue(username);
         await userNameInputFieldEle.setValue(username);
         const passwordInputFieldEle = await $(this.selectors.passwordInputField);
         await passwordInputFieldEle.waitForDisplayed();
