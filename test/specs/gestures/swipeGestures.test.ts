@@ -1,5 +1,5 @@
 
-import { ProductPage } from "../../../pages/productsPage";
+import { ProductPage } from "../../../pages/product/productsPage";
 import { BaseActions } from "../../../utilities/actions/baseActions";
 import { LoggerHelper, LOGGER } from '../../../utilities/customLogger/loggerHelper';
 

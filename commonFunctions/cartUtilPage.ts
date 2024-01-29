@@ -1,9 +1,9 @@
 
 
 
-import { AddToCartPage } from "../pages/addToCartPage";
-import { MyCartPage } from "../pages/myCartPage";
-import { ProductPage } from "../pages/productsPage";
+import { AddToCartPage } from "../pages/cart/addToCartPage";
+import { MyCartPage } from "../pages/cart/myCartPage";
+import { ProductPage } from "../pages/product/productsPage";
 
 
 export class CartUtilPage {
@@ -24,10 +24,10 @@ export class CartUtilPage {
         const productElement = await this.productPage.findProductElementByName(productName);
 
         if (productElement) {
+            await productElement.click();
             const addToCartButton = await this.addToCartPage.getAddToCartButtonEle();
 
             if(addToCartButton) {
-                await productElement.click();
                 await addToCartButton.waitForDisplayed();
                 await this.addToCartPage.increaseQuantity(addedQuantity);
                 await addToCartButton.click();
@@ -38,4 +38,17 @@ export class CartUtilPage {
             throw new Error(`Product not found: ${productName}`);
         }
     }
+
+    async getCartItems() {
+        const cartItemsElements = await this.myCartPage.getCartItemsEle();
+        const cartItems: string[] = [];
+        for (const cartItemElement of cartItemsElements) {
+            const itemName = await cartItemElement.getText();
+            cartItems.push(itemName);
+        }
+
+        return cartItems;
+
+    }
+
 }

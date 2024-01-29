@@ -1,10 +1,10 @@
 
 
 
-import { LeftSideMenuScreenPage } from "../../../pages/leftSideMenuScreenPage";
-import { QrScannerPage } from "../../../pages/qrscannerpage";
-import { ProductPage } from "../../../pages/productsPage";
-import { AddToCartPage } from "../../../pages/addToCartPage";
+import { LeftSideMenuScreenPage } from "../../../pages/hamburgerMenu/leftSideMenuScreenPage";
+import { QrScannerPage } from "../../../pages/qr/qrscannerpage";
+import { ProductPage } from "../../../pages/product/productsPage";
+import { AddToCartPage } from "../../../pages/cart/addToCartPage";
 import { LoggerHelper, LOGGER } from '../../../utilities/customLogger/loggerHelper';
 
 let leftSideMenuScreenPage: LeftSideMenuScreenPage;

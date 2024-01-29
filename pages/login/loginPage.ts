@@ -1,5 +1,5 @@
-import { LeftSideMenuScreenPage } from "./leftSideMenuScreenPage";
-import { ProductPage } from "./productsPage";
+import { LeftSideMenuScreenPage } from "../hamburgerMenu/leftSideMenuScreenPage";
+import { ProductPage } from "../product/productsPage";
 
 
 export class LoginPage {

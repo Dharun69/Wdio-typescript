@@ -1,5 +1,5 @@
-import {LogoutPage} from '../../../pages/logutPage';
-import {LoginPage} from '../../../pages/loginPage';
+import {LogoutPage} from '../../../pages/login/logutPage';
+import {LoginPage} from '../../../pages/login/loginPage';
 import { LoginDetails } from '../../../resources/customTypes/loginDetais';
 import * as loginDetailsJson from '../../../resources/testData/loginDetails.json';
 import { FileUtils } from '../../../utilities/file/fileUtils';
