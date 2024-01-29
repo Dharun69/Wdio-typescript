@@ -2,7 +2,6 @@
 
 
 import { LoggerHelper, LOGGER } from '../../../utilities/customLogger/loggerHelper';
-import * as assert from 'assert';
 import { LoginPage } from "../../../pages/loginPage";
 import { ProductPage } from "../../../pages/productsPage";
 import { AddToCartPage } from "../../../pages/addToCartPage";
@@ -12,6 +11,9 @@ import * as loginDetailsJson from '../../../resources/testData/loginDetails.json
 import { FileUtils } from '../../../utilities/file/fileUtils';
 
 import { ERROR_MESSAGES } from '../../../constants/constants';
+import * as productDetailsJson from '../../../resources/testData/productsDetails.json';
+import { ProductDetails } from '../../../resources/customTypes/productDetails';
+import { CartUtilPage } from '../../../commonFunctions/cartUtilPage';
 
 
 // const NO_ITEMS_LABEL = 'No Items';
@@ -23,6 +25,8 @@ let productPage: ProductPage;
 let addToCartPage: AddToCartPage;
 let myCartPage: MyCartPage;
 let loginDetails: LoginDetails;
+let productDetails: ProductDetails;
+let cartUtilPage: CartUtilPage;
 
 const specName = 'Product price scenarios';
 describe("Product Price Comparison", () => {
@@ -32,29 +36,22 @@ describe("Product Price Comparison", () => {
         productPage = new ProductPage();
         addToCartPage = new AddToCartPage();
         myCartPage = new MyCartPage();
+        cartUtilPage = new CartUtilPage();
         loginDetails = FileUtils.convertJsonToCustomType(loginDetailsJson);
+        productDetails = FileUtils.convertJsonToCustomType(productDetailsJson);
         await loginPage.login(loginDetails.username, loginDetails.password);
     });
 
     it("should be able to empty cart",async () => {
 
         try {
-
-            // Click on a Bolt T-shirt product.
-            (await productPage.getBoltTshirtProductEle()).click();
-
-            // Increase the quantity of the product in the cart.
+            const addedQuantity = 1;
             const initialQuantity = 1;
-            const addedQuantity = 3;
-            await addToCartPage.increaseQuantity(addedQuantity);
+            await cartUtilPage.addToCart(productDetails.name, addedQuantity);
 
             // Calculate expected total price.
             const individualProductPrice = 15.99;
             const expectedTotalPrice = individualProductPrice * (initialQuantity + addedQuantity);
-
-
-            // Add the product to the cart.
-            await addToCartPage.addToCart();
 
             // Click on the cart icon.
             await addToCartPage.clickCartIcon();

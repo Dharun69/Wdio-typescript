@@ -52,4 +52,24 @@ export class ProductPage {
         await boltTshirtPrice.waitForDisplayed();
         return await boltTshirtPrice.getText();
     }
+
+    public async selectProductByName(productName: string): Promise<void> {
+        const productElement = await this.findProductElementByName(productName);
+        if (productElement) {
+            await productElement.click();
+        } else {
+            throw new Error(`Product not found: ${productName}`);
+        }
+    }
+
+    public async findProductElementByName(productName: string): Promise<WebdriverIO.Element | undefined> {
+        const allProductElements = await this.getAllProductElements();
+
+        // Find the product element by name
+        return allProductElements.find(async (element) => {
+            const elementName = await element.getText();
+            return elementName === productName;
+        });
+    }
+
 }
