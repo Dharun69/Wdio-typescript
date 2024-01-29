@@ -1,7 +1,7 @@
 
 import { $ } from "@wdio/globals";
-import { ShippingAddressUi } from "../resources/customTypes/shippingAddressUi";
-import { CardDetails } from "../resources/customTypes/cardDetails"
+import { ShippingAddressUi } from "../../resources/customTypes/shippingAddressUi";
+import { CardDetails } from "../../resources/customTypes/cardDetails"
 
 export class CheckOutPage {
 

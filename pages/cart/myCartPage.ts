@@ -10,12 +10,17 @@ export class MyCartPage {
         goShoppingButton: '//android.view.ViewGroup[@content-desc="Go Shopping button"]',
         myCartLabel: '//android.widget.TextView[@text="My Cart"]',
         noItemsLabel: '//android.widget.TextView[@text="No Items"]',
-        totalPrice: "~total price"
+        totalPrice: "~total price",
+        cartItems: "(//android.widget.TextView[@content-desc='product label'])"
 
     }
 
     async getProccedTOCheckoutButtonEle() {
         return await $(this.selectors.proceedToCheckoutButton);
+    }
+
+    async getCartItemsEle() {
+        return await $$(this.selectors.cartItems)
     }
 
     async getCartIsEmptyMessage() {

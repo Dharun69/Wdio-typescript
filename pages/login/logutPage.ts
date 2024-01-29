@@ -1,6 +1,6 @@
 import { $ } from "@wdio/globals"
-import { ProductPage } from "./productsPage";
-import { LeftSideMenuScreenPage } from "./leftSideMenuScreenPage";
+import { ProductPage } from "../product/productsPage";
+import { LeftSideMenuScreenPage } from "../hamburgerMenu/leftSideMenuScreenPage";
 
 
 export class LogoutPage {

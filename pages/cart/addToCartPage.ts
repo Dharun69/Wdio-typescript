@@ -37,7 +37,7 @@ export class AddToCartPage {
     }
 
     async increaseQuantity(qty: number) {
-        for(let i=0; i<qty; i++) {
+        for(let i=1; i<=qty; i++) {
             (await $(this.selectors.increaseQuantity)).click();
         }
     }

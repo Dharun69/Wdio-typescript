@@ -1,8 +1,8 @@
 
 
-import { ProductPage } from "../../../pages/productsPage";
-import { LeftSideMenuScreenPage } from "../../../pages/leftSideMenuScreenPage";
-import { WebViewPage } from "../../../pages/webViewPage";
+import { ProductPage } from "../../../pages/product/productsPage";
+import { LeftSideMenuScreenPage } from "../../../pages/hamburgerMenu/leftSideMenuScreenPage";
+import { WebViewPage } from "../../../pages/webview/webViewPage";
 import { SwitchContextUtils } from "../../../utilities/actions/switchContextUtils";
 import { LoggerHelper, LOGGER } from '../../../utilities/customLogger/loggerHelper';
 
