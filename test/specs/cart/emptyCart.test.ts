@@ -19,7 +19,6 @@ const CART_IS_EMPTY_MESSAGE = 'Oh no! Your cart is empty. Fill it up with swag t
 
 
 let loginPage : LoginPage;
-let productPage: ProductPage;
 let addToCartPage: AddToCartPage;
 let myCartPage: MyCartPage;
 let loginDetails: LoginDetails;
@@ -31,7 +30,6 @@ describe("Should able to empty the cart", () => {
     before(async () => {
         LoggerHelper.setupLogger(specName);
         loginPage = new LoginPage();
-        productPage = new ProductPage();
         addToCartPage = new AddToCartPage();
         myCartPage = new MyCartPage();
         cartUtilPage = new CartUtilPage();
@@ -53,10 +51,8 @@ describe("Should able to empty the cart", () => {
             // Click on the cart icon.
             await addToCartPage.clickCartIcon();
 
-
             // Verify the total price in the cart.
-            await verifyTotalPriceInCart(expectedTotalPrice);
-
+            await cartUtilPage.verifyTotalPriceInCart(expectedTotalPrice);
 
             // Click on the "Remove Item" button.
             await myCartPage.clickRemoveItem();
@@ -69,7 +65,6 @@ describe("Should able to empty the cart", () => {
             const cartIsEmptyMsg = await (await myCartPage.getCartIsEmptyMessage()).getText();
             expect(cartIsEmptyMsg).toBe(CART_IS_EMPTY_MESSAGE);
            
-            // Click on the "Go Shopping" button.
             (await myCartPage.getGoShoppingButton()).click();
         } catch (error) {
                 // Log the error using your custom logger
@@ -78,15 +73,5 @@ describe("Should able to empty the cart", () => {
                 throw error;
         }
     });
-
-
-    async function verifyTotalPriceInCart(expectedTotalPrice: number) {
-        // Retrieve actual total price from the cart.
-        const actualTotalPriceBeforeRemove = await (await myCartPage.getTotalPriceEle()).getText();
-        const actualTotalPrice = Number(actualTotalPriceBeforeRemove.replace('$', ''));
-      
-        // Assert that the actual total price matches the expected total price.
-        expect(actualTotalPrice).toEqual(expectedTotalPrice);
-      }
 
 })

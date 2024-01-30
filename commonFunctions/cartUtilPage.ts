@@ -1,6 +1,3 @@
-
-
-
 import { AddToCartPage } from "../pages/cart/addToCartPage";
 import { MyCartPage } from "../pages/cart/myCartPage";
 import { ProductPage } from "../pages/product/productsPage";
@@ -40,6 +37,7 @@ export class CartUtilPage {
     }
 
     async getCartItems() {
+        await driver.pause(2000);
         const cartItemsElements = await this.myCartPage.getCartItemsEle();
         const cartItems: string[] = [];
         for (const cartItemElement of cartItemsElements) {
@@ -51,4 +49,9 @@ export class CartUtilPage {
 
     }
 
+    async verifyTotalPriceInCart(expectedTotalPrice: number) {
+        const actualTotalPriceBeforeRemove = await (await this.myCartPage.getTotalPriceEle()).getText();
+        const actualTotalPrice = Number(actualTotalPriceBeforeRemove.replace('$', ''));
+        expect(actualTotalPrice).toEqual(expectedTotalPrice);
+      }
 }
