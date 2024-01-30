@@ -1,9 +1,6 @@
 
-
-
 import { LoggerHelper, LOGGER } from '../../../utilities/customLogger/loggerHelper';
 import { LoginPage } from "../../../pages/login/loginPage";
-import { ProductPage } from "../../../pages/product/productsPage";
 import { AddToCartPage } from "../../../pages/cart/addToCartPage";
 import { MyCartPage } from '../../../pages/cart/myCartPage';
 import { LoginDetails } from '../../../resources/customTypes/loginDetais';
